@@ -1,26 +1,75 @@
 <thf-modal #modal t-title="Filtro" id="filtro">
-  <thf-input type="number" name="cod_emitente_ini" id="cod_emitente_ini" class="thf-md-6" t-label="Cod. Emitente Inicial" [(ngModel)]="cod_emitente_ini">
+  <thf-input
+    type="number"
+    name="cod_emitente_ini"
+    id="cod_emitente_ini"
+    class="thf-md-6"
+    t-label="Cod. Emitente Inicial"
+    [(ngModel)]="cod_emitente_ini"
+  >
   </thf-input>
 
-  <thf-input name="cod_emitente_fim" id="cod_emitente_fim" class="thf-md-6" t-label="Cod. Emitente Final" [(ngModel)]="cod_emitente_fim">
+  <thf-input
+    name="cod_emitente_fim"
+    id="cod_emitente_fim"
+    class="thf-md-6"
+    t-label="Cod. Emitente Final"
+    [(ngModel)]="cod_emitente_fim"
+  >
   </thf-input>
 
-  <thf-input name="nro_docto_ini" id="nro_docto_ini" class="thf-md-6" t-label="Número Documento Inicial" [(ngModel)]="nro_docto_ini">
+  <thf-input
+    name="nro_docto_ini"
+    id="nro_docto_ini"
+    class="thf-md-6"
+    t-label="Número Documento Inicial"
+    [(ngModel)]="nro_docto_ini"
+  >
   </thf-input>
 
-  <thf-input name="nro_docto_fim" id="nro_docto_fim" class="thf-md-6" t-label="Número Documento Final" [(ngModel)]="nro_docto_fim">
+  <thf-input
+    name="nro_docto_fim"
+    id="nro_docto_fim"
+    class="thf-md-6"
+    t-label="Número Documento Final"
+    [(ngModel)]="nro_docto_fim"
+  >
   </thf-input>
 
-  <thf-input name="serie_docto_ini" id="serie_docto_ini" class="thf-md-6" t-label="Série Documento Inicial" [(ngModel)]="serie_docto_ini">
+  <thf-input
+    name="serie_docto_ini"
+    id="serie_docto_ini"
+    class="thf-md-6"
+    t-label="Série Documento Inicial"
+    [(ngModel)]="serie_docto_ini"
+  >
   </thf-input>
 
-  <thf-input name="serie_docto_fim" id="serie_docto_fim" class="thf-md-6" t-label="Série Documento Final" [(ngModel)]="serie_docto_fim">
+  <thf-input
+    name="serie_docto_fim"
+    id="serie_docto_fim"
+    class="thf-md-6"
+    t-label="Série Documento Final"
+    [(ngModel)]="serie_docto_fim"
+  >
   </thf-input>
 
-  <thf-input name="nat_operacao_ini" id="nat_operacao_ini" class="thf-md-6" t-label="Natureza Operação Inicial" [(ngModel)]="nat_operacao_ini">
+  <thf-input
+    name="nat_operacao_ini"
+    id="nat_operacao_ini"
+    class="thf-md-6"
+    t-label="Natureza Operação Inicial"
+    [(ngModel)]="nat_operacao_ini"
+  >
   </thf-input>
 
-  <thf-input name="nat_operacao_fim" id="nat_operacao_fim" class="thf-md-6" t-label="Natureza Operação Final" [(ngModel)]="nat_operacao_fim">
+  <thf-input
+    name="nat_operacao_fim"
+    id="nat_operacao_fim"
+    class="thf-md-6"
+    t-label="Natureza Operação Final"
+    [(ngModel)]="nat_operacao_fim"
+  >
   </thf-input>
 
   <thf-input
@@ -64,34 +113,29 @@
   >
   </thf-datepicker>
 
-  <thf-combo
-  class="thf-md-6"
-  id="i_confere"
-  name="combo"
-  t-label="Deseja buscar registros conferidos?"
-  [t-options]="[{ value: 'Conferido' }, { value: 'Não conferido' }, { value: 'Ambos' }]"
-  [(ngModel)]="i_confere"
+  <thf-select
+    class="thf-md-6"
+    name="getConfere"
+    [(ngModel)]="getConfere"
+    t-label="Dados já conferidos?"
+    [t-options]="getConfereOptions"
   >
+  </thf-select>
 
-</thf-combo>
-
-<thf-combo
-  class="thf-md-6"
-  id="l_confere"
-  name="combo"
-  t-label="Deseja trazer relatório com dados analiticos?"
-  [t-options]="[{ value: 'Sim' }, { value: 'Não' }]"
-  [(ngModel)]="l_detalhe"
+  <thf-select
+    class="thf-md-6"
+    name="getDetalhe"
+    [(ngModel)]="getDetalhe"
+    t-label="Dados analiticos?"
+    [t-options]="getDetalheOptions"
   >
-</thf-combo>
+  </thf-select>
 
-<div class="thf-row">
-  <thf-button
-    class="thf-md-3"
-    t-label="Filtro"
-    (t-click)="ok()">
-  </thf-button>
-</div>
+
+
+  <div class="thf-row">
+    <thf-button class="thf-md-3" t-label="Teste" (t-click)="ok()"> </thf-button>
+  </div>
 </thf-modal>
 
 <thf-button t-label="Filtro" (t-click)="modal.open()"></thf-button>

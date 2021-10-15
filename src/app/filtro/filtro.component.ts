@@ -1,45 +1,49 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ThfRadioGroupOption } from '@totvs/thf-ui';
+import { Component, OnInit } from '@angular/core';
+import { ThfComboComponent, ThfComboOption, ThfMultiselectOption, ThfRadioGroupOption } from '@totvs/thf-ui';
+import { FiltroService } from './filtro.service';
 
 @Component({
   selector: 'app-filtro',
   templateUrl: './filtro.component.html',
-  styleUrls: ['./filtro.component.css']
+  styleUrls: ['./filtro.component.css'],
+  providers: [FiltroService]
 })
 export class FiltroComponent implements OnInit {
 
-  //@ViewChild('cod_emitente_ini', {static: true}) cod_emitente_ini: ElementRef
+  getDetalhe: Array<string> = []
+  getDetalheOptions
+  getConfere: Array<string> = []
+  getConfereOptions
+  cod_emitente_ini: string
+  cod_emitente_fim: string
+  nro_docto_ini: string
+  nro_docto_fim: string
+  serie_docto_ini: string
+  serie_docto_fim: string
+  nat_operacao_ini: string
+  nat_operacao_fim: string
+  cod_estabel_ini: string
+  cod_estabel_fim: string
+  dt_trans_ini: Date
+  dt_trans_fim: Date
+  i_confere: string
+  l_detalhe: boolean
+  calendar
+  event
+  locale: string
 
-  constructor() { }
+  tableColumns: Array<any>
 
 
+  constructor(
+    private filtroService: FiltroService
+  ) { }
 
-  ngOnInit() {
-   // this.restore();
+  ngOnInit(): void {
+
+    this.getConfereOptions = this.filtroService.getConfere()
+    this.getDetalheOptions = this.filtroService.getDetalhe()
   }
-
-
-  public cod_emitente_ini: string
-  public cod_emitente_fim: string
-  public nro_docto_ini: string
-  public nro_docto_fim: string
-  public serie_docto_ini: string
-  public serie_docto_fim: string
-  public nat_operacao_ini: string
-  public nat_operacao_fim: string
-  public cod_estabel_ini: string
-  public cod_estabel_fim: string
-  public dt_trans_ini: string | Date;
-  public dt_trans_fim: string | Date;
-  public i_confere: string
-  public l_detalhe: boolean
-
-
-
-  calendar;
-  event;
-  locale: string;
-
 
   readonly localeOptions: Array<ThfRadioGroupOption> = [
     { label: 'pt', value: 'pt' },
@@ -47,26 +51,21 @@ export class FiltroComponent implements OnInit {
     { label: 'en', value: 'en' }
   ];
 
-
-
   changeEvent(event: string) {
     this.event = event;
   }
 
- /* restore() {
-    this.calendar = undefined;
-    this.event = undefined;
-    this.locale = undefined;
-    this.dt_trans_ini = undefined;
-    this.dt_trans_fim = undefined;
-  } */
 
-  valueDropDown() {
 
+  ok(): void {
+   var dataInputIni = this.dt_trans_ini
+   var datainputFim = this.dt_trans_fim
+   var dataIni = new Date(dataInputIni)
+   var dataFim = new Date(datainputFim)
+
+   const dataFormatadaIni = dataIni.toLocaleDateString('pt-BR', {timeZone: 'UTC'})
+   const dataFormatadaFim = dataFim.toLocaleDateString('pt-BR', {timeZone: 'UTC'})
+   console.log(this.cod_emitente_ini)
   }
 
-  ok() {
-    console.log(this.cod_emitente_ini, this.cod_emitente_fim, this.dt_trans_ini, this.dt_trans_fim)
-  }
 }
-

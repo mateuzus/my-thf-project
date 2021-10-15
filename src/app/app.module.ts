@@ -6,8 +6,9 @@ import { ThfModule } from '@totvs/thf-ui';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TabelaComponent } from './tabela';
+
 import { FiltroComponent } from './filtro';
+import { TabelaComponent, TabelaService } from './tabela';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { FiltroComponent } from './filtro';
     ThfModule,
     RouterModule.forRoot([])
   ],
-  providers: [],
+  providers: [TabelaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
