@@ -14,27 +14,18 @@ export class TabelaComponent implements OnInit {
 
   carregou_items: boolean = false
   tableColumns: Array<any>
-  tableData: Array<object>
+  tableData: Array<any> = new Array
   title: any
-
-  @ViewChild(ThfModalComponent) thfModal: ThfModalComponent
-
-  private modal_secondary_antion_attend: ThfModalAction = {
-    label: 'Fechar',
-    danger: true,
-    action: () => {
-      this.thfModal.close()
-    }
-  }
 
 
   constructor(
-    private service: TabelaService,
+    private tabelaService: TabelaService,
     public thfDialog: ThfDialogService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.loadInitial()
+    this.listItems()
   }
 
   loadInitial(){
@@ -42,13 +33,15 @@ export class TabelaComponent implements OnInit {
   }
 
   loadTableColumns(){
-    this.tableColumns = this.service.getColumns(this)
+    this.tableColumns = this.tabelaService.getColumns(this)
     return this
   }
 
-
-
-  abrirModalDetalhe(value, row, type, title){
-    this.title = title
+  listItems(){
+    /* this.tabelaService.getItems().subscribe(tableData => {
+      this.tableData = tableData
+    }, err => {
+      console.log('Erro ao listar os dados', err)
+    }) */
   }
 }

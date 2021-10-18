@@ -5,7 +5,7 @@
     id="cod_emitente_ini"
     class="thf-md-6"
     t-label="Cod. Emitente Inicial"
-    [(ngModel)]="cod_emitente_ini"
+    [(ngModel)]="params.cod_emitente_ini"
   >
   </thf-input>
 
@@ -14,7 +14,7 @@
     id="cod_emitente_fim"
     class="thf-md-6"
     t-label="Cod. Emitente Final"
-    [(ngModel)]="cod_emitente_fim"
+    [(ngModel)]="params.cod_emitente_fim"
   >
   </thf-input>
 
@@ -23,7 +23,7 @@
     id="nro_docto_ini"
     class="thf-md-6"
     t-label="Número Documento Inicial"
-    [(ngModel)]="nro_docto_ini"
+    [(ngModel)]="params.nro_docto_ini"
   >
   </thf-input>
 
@@ -32,7 +32,7 @@
     id="nro_docto_fim"
     class="thf-md-6"
     t-label="Número Documento Final"
-    [(ngModel)]="nro_docto_fim"
+    [(ngModel)]="params.nro_docto_fim"
   >
   </thf-input>
 
@@ -41,7 +41,7 @@
     id="serie_docto_ini"
     class="thf-md-6"
     t-label="Série Documento Inicial"
-    [(ngModel)]="serie_docto_ini"
+    [(ngModel)]="params.serie_docto_ini"
   >
   </thf-input>
 
@@ -50,7 +50,7 @@
     id="serie_docto_fim"
     class="thf-md-6"
     t-label="Série Documento Final"
-    [(ngModel)]="serie_docto_fim"
+    [(ngModel)]="params.serie_docto_fim"
   >
   </thf-input>
 
@@ -59,7 +59,7 @@
     id="nat_operacao_ini"
     class="thf-md-6"
     t-label="Natureza Operação Inicial"
-    [(ngModel)]="nat_operacao_ini"
+    [(ngModel)]="params.nat_operacao_ini"
   >
   </thf-input>
 
@@ -68,7 +68,7 @@
     id="nat_operacao_fim"
     class="thf-md-6"
     t-label="Natureza Operação Final"
-    [(ngModel)]="nat_operacao_fim"
+    [(ngModel)]="params.nat_operacao_fim"
   >
   </thf-input>
 
@@ -77,7 +77,7 @@
     id="cod_estabel_ini"
     class="thf-md-6"
     t-label="Código Estabelecimento Inicial"
-    [(ngModel)]="cod_estabel_ini"
+    [(ngModel)]="params.cod_estabel_ini"
   >
   </thf-input>
 
@@ -86,7 +86,7 @@
     id="cod_estabel_fim"
     class="thf-md-6"
     t-label="Código Estabelecimento Final"
-    [(ngModel)]="cod_estabel_fim"
+    [(ngModel)]="params.cod_estabel_fim"
   >
   </thf-input>
 
@@ -94,10 +94,10 @@
     class="thf-md-6"
     name="dt_trans_ini"
     id="dt_trans_ini"
-    [(ngModel)]="dt_trans_ini"
+    [(ngModel)]="params.dt_trans_ini"
     t-clean
     t-label="Data Transação Inicial"
-    [t-max-date]="dt_trans_fim"
+    [t-max-date]="params.dt_trans_fim"
   >
   </thf-datepicker>
 
@@ -105,10 +105,10 @@
     class="thf-md-6"
     name="dt_trans_fim"
     id="dt_trans_fim"
-    [(ngModel)]="dt_trans_fim"
+    [(ngModel)]="params.dt_trans_fim"
     t-clean
     t-label="Data Transação Final"
-    [t-min-date]="dt_trans_ini"
+    [t-min-date]="params.dt_trans_ini"
     [(ngModel)]="dt_trans_fim"
   >
   </thf-datepicker>

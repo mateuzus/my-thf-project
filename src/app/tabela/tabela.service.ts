@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
@@ -43,9 +44,9 @@ export class TabelaService {
           value: 'excluir'
         }
       ] },
-      { property: 'nro-docto', label: 'Nmr. Documento' },
-      { property: 'dt-trans', label: 'Dt. transação', type: 'string' },
-      { property: 'cod-emitente', label: 'Cod. Emitente' },
+      { property: 'id', label: 'Nmr. Documento' },
+      { property: 'nome', label: 'Dt. transação', type: 'string' },
+      { property: 'idade', label: 'Cod. Emitente' },
       { property: 'cod-estabel', label: 'Cod. Estabelecimento', type: 'string' },
       { property: 'dt-atualizacao', label: 'Dt. Atualização' },
       { property: 'dt-emissao', label: 'Dt. Emissão' },
@@ -57,51 +58,9 @@ export class TabelaService {
     ];
   }
 
-  getItems(filter, sucess_func, error_func) {
-    /* return [
-      { id: '1', nroDocto: 'James Johnson', dtTrans: 'Ontario', codEmitent: 24, codEstabel: 'AB34lxi90', serieDocto: 'Systems Analyst', natOperacao: '412354' },
-      { id: '2', nroDocto: 'Brian Brown', dtTrans: 'Buffalo', codEmitent: 23, codEstabel: 'HG56lds54', serieDocto: 'Trainee', natOperacao: '920183' },
-      { id: '3', nroDocto: 'Mary Davis', dtTrans: 'Albany', codEmitent: 31, codEstabel: 'DF23cfr65', serieDocto: 'Programmer', natOperacao: '019278' },
-      { id: '4', nroDocto: 'Margaret Garcia', dtTrans: 'New York', codEmitent: 29, codEstabel: 'GF45fgh34', serieDocto: 'Web developer', natOperacao: '102372' },
-      { id: '5', nroDocto: 'Emma Hall', dtTrans: 'Ontario', codEmitent: 34, codEstabel: 'RF76jut21', serieDocto: 'Recruiter', natOperacao: '102987' },
-      { id: '6', nroDocto: 'Lucas Clark', dtTrans: 'Utica', codEmitent: 32, codEstabel: 'HY21kgu65', serieDocto: 'Consultant', natOperacao: '543221' },
-      { id: '7', nroDocto: 'Ella Scott', dtTrans: 'Ontario', codEmitent: 24, codEstabel: 'UL78flg68', serieDocto: 'DBA', natOperacao: '952121' },
-      { id: '8', nroDocto: 'Chloe Walker', dtTrans: 'Albany', codEmitent: 29, codEstabel: 'JH12oli98', serieDocto: 'Programmer', natOperacao: '078843' },
-    ]; */
-    return this.apiCrudItems(filter, sucess_func, error_func)
+  getItems() {
+
   }
 
-  apiCrudItems(data_send, success_func, error_func){
-    let url = this.baseUrl + 'api-real8001a.r'
 
-    let headers_send = new HttpHeaders()
-    headers_send = headers_send.append("Authorization", "Basic" + btoa("maikon:Titi@01titi"))
-    headers_send = headers_send.append("Content-Type", "application/json")
-
-    return this.http.post(url, JSON.stringify(data_send), {
-      headers: headers_send,
-      responseType: 'json',
-      withCredentials: true
-    })
-    .subscribe(
-      success_func,
-      error_func
-    )
-  }
-
-  getBaseUrl(){
-    return this.baseUrl
-  }
-
-  getJobs() {
-    return [
-      { value: 'Systems Analyst', label: 'Systems Analyst' },
-      { value: 'Trainee', label: 'Trainee' },
-      { value: 'Programmer', label: 'Programmer'},
-      { value: 'Web Developer', label: 'Web developer'},
-      { value: 'Recruiter', label: 'Recruiter'},
-      { value: 'Consultant', label: 'Consultant'},
-      { value: 'DBA', label: 'DBA'}
-    ];
-  }
 }

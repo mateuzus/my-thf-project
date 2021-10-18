@@ -14,26 +14,27 @@ export class FiltroComponent implements OnInit {
   getDetalheOptions
   getConfere: Array<string> = []
   getConfereOptions
-  cod_emitente_ini: string
-  cod_emitente_fim: string
-  nro_docto_ini: string
-  nro_docto_fim: string
-  serie_docto_ini: string
-  serie_docto_fim: string
-  nat_operacao_ini: string
-  nat_operacao_fim: string
-  cod_estabel_ini: string
-  cod_estabel_fim: string
-  dt_trans_ini: Date
-  dt_trans_fim: Date
-  i_confere: string
-  l_detalhe: boolean
   calendar
   event
   locale: string
-
   tableColumns: Array<any>
 
+  params = {
+  cod_emitente_ini: '',
+  cod_emitente_fim: '',
+  nro_docto_ini: '',
+  nro_docto_fim: '',
+  serie_docto_ini: '',
+  serie_docto_fim: '',
+  nat_operacao_ini: '',
+  nat_operacao_fim: '',
+  cod_estabel_ini: '',
+  cod_estabel_fim: '',
+  dt_trans_ini: '',
+  dt_trans_fim: '',
+  i_confere: '',
+  l_detalhe: ''
+  }
 
   constructor(
     private filtroService: FiltroService
@@ -58,14 +59,8 @@ export class FiltroComponent implements OnInit {
 
 
   ok(): void {
-   var dataInputIni = this.dt_trans_ini
-   var datainputFim = this.dt_trans_fim
-   var dataIni = new Date(dataInputIni)
-   var dataFim = new Date(datainputFim)
 
-   const dataFormatadaIni = dataIni.toLocaleDateString('pt-BR', {timeZone: 'UTC'})
-   const dataFormatadaFim = dataFim.toLocaleDateString('pt-BR', {timeZone: 'UTC'})
-   console.log(this.cod_emitente_ini)
+  console.log(this.params)
   }
 
 }

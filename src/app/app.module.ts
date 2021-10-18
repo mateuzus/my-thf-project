@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 
 import { FiltroComponent } from './filtro';
 import { TabelaComponent, TabelaService } from './tabela';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,10 +21,11 @@ import { TabelaComponent, TabelaService } from './tabela';
     BrowserModule,
     CommonModule,
     FormsModule,
+    HttpClientModule,
     ThfModule,
     RouterModule.forRoot([])
   ],
-  providers: [TabelaService],
+  providers: [HttpClientModule,TabelaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
