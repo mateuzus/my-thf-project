@@ -1,4 +1,5 @@
-<thf-modal #modal t-title="Filtro" id="filtro">
+<thf-modal #modal t-title="Filtro" [t-primary-action]="confirm" [t-secondary-action]="close">
+  <form #optionsForm="ngForm">
   <thf-input
     type="number"
     name="cod_emitente_ini"
@@ -116,7 +117,7 @@
   <thf-select
     class="thf-md-6"
     name="getConfere"
-    [(ngModel)]="getConfere"
+    [(ngModel)]="params.i_confere"
     t-label="Dados já conferidos?"
     [t-options]="getConfereOptions"
   >
@@ -125,17 +126,21 @@
   <thf-select
     class="thf-md-6"
     name="getDetalhe"
-    [(ngModel)]="getDetalhe"
+    [(ngModel)]="params.l_detalhe"
     t-label="Dados analiticos?"
     [t-options]="getDetalheOptions"
   >
   </thf-select>
 
-
-
   <div class="thf-row">
-    <thf-button class="thf-md-3" t-label="Teste" (t-click)="ok()"> </thf-button>
+    <thf-button class="thf-md-3" type="submit" t-label="Teste" (t-click)="ok()"> </thf-button>
   </div>
+</form>
 </thf-modal>
+
+<thf-loading-overlay
+  *ngIf="getShowLoadding()"
+  t-screen-lock="true"
+></thf-loading-overlay>
 
 <thf-button t-label="Filtro" (t-click)="modal.open()"></thf-button>

@@ -24,29 +24,11 @@ export class TabelaService {
           icon: 'thf-icon thf-icon-list',
           tooltip: 'Clique para ver os detalhes',
           value: 'detalhar'
-        },
-        {
-          action: (value, row) => {
-            component_instance.abrirModalDetalhe(value, row, 'edit', 'Editar');
-          },
-          // disabled: component_instance.canGoToDocumentation.bind(this),
-          icon: 'thf-icon-edit',
-          tooltip: 'Clique para editar',
-          value: 'editar'
-        },
-        {
-          action: (value, row) => {
-            component_instance.abrirModalDetalhe(value, row, 'delete', 'Excluir');
-          },
-          // disabled: component_instance.canGoToDocumentation.bind(this),
-          icon: 'thf-icon-delete',
-          tooltip: 'Clique para excluir',
-          value: 'excluir'
         }
       ] },
-      { property: 'id', label: 'Nmr. Documento' },
-      { property: 'nome', label: 'Dt. transação', type: 'string' },
-      { property: 'idade', label: 'Cod. Emitente' },
+      { property: 'nro-docto', label: 'Nmr. Documento' },
+      { property: 'dt-trans', label: 'Dt. transação', type: 'string' },
+      { property: 'cod-emitente', label: 'Cod. Emitente' },
       { property: 'cod-estabel', label: 'Cod. Estabelecimento', type: 'string' },
       { property: 'dt-atualizacao', label: 'Dt. Atualização' },
       { property: 'dt-emissao', label: 'Dt. Emissão' },
