@@ -1,18 +1,151 @@
+<thf-modal #modal t-title="Filtro" [t-primary-action]="confirm" [t-secondary-action]="close" t-click-out="true">
+  <form #optionsForm="ngForm">
+  <thf-input
+    type="number"
+    name="cod_emitente_ini"
+    id="cod_emitente_ini"
+    class="thf-md-6"
+    t-label="Cod. Emitente Inicial"
+    [(ngModel)]="params['cod-emitente-ini']"
+  >
+  </thf-input>
+
+  <thf-input
+    name="cod_emitente_fim"
+    id="cod_emitente_fim"
+    class="thf-md-6"
+    t-label="Cod. Emitente Final"
+    [(ngModel)]="params['cod-emitente-fim']"
+  >
+  </thf-input>
+
+  <thf-input
+    name="nro_docto_ini"
+    id="nro_docto_ini"
+    class="thf-md-6"
+    t-label="Número Documento Inicial"
+    [(ngModel)]="params['nro-docto-ini']"
+  >
+  </thf-input>
+
+  <thf-input
+    name="nro_docto_fim"
+    id="nro_docto_fim"
+    class="thf-md-6"
+    t-label="Número Documento Final"
+    [(ngModel)]="params['nro-docto-fim']"
+  >
+  </thf-input>
+
+  <thf-input
+    name="serie_docto_ini"
+    id="serie_docto_ini"
+    class="thf-md-6"
+    t-label="Série Documento Inicial"
+    [(ngModel)]="params['serie-docto-ini']"
+  >
+  </thf-input>
+
+  <thf-input
+    name="serie_docto_fim"
+    id="serie_docto_fim"
+    class="thf-md-6"
+    t-label="Série Documento Final"
+    [(ngModel)]="params['serie-docto-fim']"
+  >
+  </thf-input>
+
+  <thf-input
+    name="nat_operacao_ini"
+    id="nat_operacao_ini"
+    class="thf-md-6"
+    t-label="Natureza Operação Inicial"
+    [(ngModel)]="params['nat-operacao-ini']"
+  >
+  </thf-input>
+
+  <thf-input
+    name="nat_operacao_fim"
+    id="nat_operacao_fim"
+    class="thf-md-6"
+    t-label="Natureza Operação Final"
+    [(ngModel)]="params['nat-operacao-fim']"
+  >
+  </thf-input>
+
+  <thf-input
+    name="cod_estabel_ini"
+    id="cod_estabel_ini"
+    class="thf-md-6"
+    t-label="Código Estabelecimento Inicial"
+    [(ngModel)]="params['cod-estabel-ini']"
+  >
+  </thf-input>
+
+  <thf-input
+    name="cod_estabel_fim"
+    id="cod_estabel_fim"
+    class="thf-md-6"
+    t-label="Código Estabelecimento Final"
+    [(ngModel)]="params['cod-estabel-fim']"
+  >
+  </thf-input>
+
+  <thf-datepicker
+    class="thf-md-6"
+    name="dt_trans_ini"
+    id="dt_trans_ini"
+    [(ngModel)]="params['dt-trans-ini']"
+    t-clean
+    t-label="Data Transação Inicial"
+    [t-max-date]="params['dt-trans-fim']"
+  >
+  </thf-datepicker>
+
+  <thf-datepicker
+    class="thf-md-6"
+    name="dt_trans_fim"
+    id="dt_trans_fim"
+    [(ngModel)]="params['dt-trans-fim']"
+    t-clean
+    t-label="Data Transação Final"
+    [t-min-date]="params['dt-trans-ini']"
+    [(ngModel)]="params['dt-trans-fim']"
+  >
+  </thf-datepicker>
+
+  <thf-select
+    class="thf-md-6"
+    name="getConfere"
+    [(ngModel)]="params['i-confere']"
+    t-label="Dados já conferidos?"
+    [t-options]="getConfereOptions"
+  >
+  </thf-select>
+
+  <thf-select
+    class="thf-md-6"
+    name="getDetalhe"
+    [(ngModel)]="params['l-detalhe']"
+    t-label="Dados analiticos?"
+    [t-options]="getDetalheOptions"
+  >
+  </thf-select>
+</form>
+</thf-modal>
+
+<thf-button
+  id="Filtro"
+  t-label="Filtro"
+  (t-click)="modal.open()">
+</thf-button>
+
+<div>
+  <thf-loading-overlay [hidden]="isHideLoading"></thf-loading-overlay>
+</div>
+
 <thf-table  t-sort="true" t-striped="true" [t-columns]="tableColumns" [t-items]="tableData">
-  
+
 </thf-table>
 
-<!-- <table>
-  <tr>
-    <th>Id</th>
-    <th>Nome</th>
-    <th>Idade</th>
-  </tr>
-
-  <tr *ngFor="let aluno of tableData">
-    <td>{{ aluno.id}}</td>
-    <td>{{aluno.nome}}</td>
-    <td>{{aluno.idade}}</td>
-  </tr>
-</table> -->
 

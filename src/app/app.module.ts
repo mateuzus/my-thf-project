@@ -7,16 +7,15 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { FiltroComponent } from './filtro';
+
 import { TabelaComponent, TabelaService } from './tabela';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TabelaComponent,
-    FiltroComponent
   ],
   imports: [
     BrowserModule,
