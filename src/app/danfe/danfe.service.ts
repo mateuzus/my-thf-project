@@ -1,15 +1,19 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: "root",
 })
 export class DanfeService {
+
+  private baseUrl: string = environment.base_url_api;
+
   constructor(private http: HttpClient) {}
 
   getColumns(component_instance) {
     return [
-      { property: "dt-docto", label: "Data" },
+      { property: "dt-docto", label: "Data", currency: 'BRL'},
       { property: "esp-docto", label: "ESP" },
       { property: "serie", label: "Serie" },
       { property: "nr-doc-fis", label: "Docum" },
@@ -22,7 +26,7 @@ export class DanfeService {
 
   getColumnsttConta(component_instance) {
     return [
-      { property: "vl-imposto", label: "Valor Contabil" },
+      { property: "vl-imposto", label: "Valor Contabil", currency: 'BRL' },
       { property: "nat-operacao", label: "CFOP" },
       { property: "imposto", label: "Imp" },
       { property: "aliquota", label: "Al" },
@@ -71,15 +75,19 @@ export class DanfeService {
 
   getColumnsContaMvto(component_instance){
     return [
+      { property: 'id', label: 'ID' },
       { property: 'conta', label: 'Conta' },
+      { property: 'id-docum-est', label: 'ID Doc' },
       { property: 'titulo', label: 'Título' },
-      { property: 'conta', label: 'Conta' },
       { property: 'debito', label: 'Valor Débito' },
       { property: 'credito', label: 'Valor Crédito' },
+
     ]
   }
 
   realB(params, sucess_func?, error_func?) {
+
+    let url = this.baseUrl + 'api-real8001b.r'
 
     let headers_send = new HttpHeaders();
     headers_send = headers_send.append("Authorization", "Basic " + btoa("maikon:Titi@01titi"))
@@ -89,7 +97,7 @@ export class DanfeService {
       "tt-param": params
     }
 
-    return this.http.post("https://alpino-dts-teste.totvscloud.com.br/api/esp/v1/api-real8001b.r", params2, {
+    return this.http.post(url, params2, {
       headers: headers_send,
       responseType: 'json',
       withCredentials: true

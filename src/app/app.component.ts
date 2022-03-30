@@ -6,12 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-
-@Input() ttConta: any
-@Input() ttDocFiscal: any
-@Input() ttItemDoc: any
-@Input() ttDuplicata: any
-
-
+  
 }

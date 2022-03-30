@@ -53,15 +53,14 @@ export class DanfeComponent implements OnInit {
       };
 
       this.danfeService.realB(params2, (tableData) => {
-        console.log(params2, tableData)
         this.ttDocFiscal = tableData.items[0].ds_seqdocumest["tt-doc-fiscal"]
         this.ttConta = tableData.items[0].ds_seqdocumest["tt-imposto"]
         this.ttItemDoc = tableData.items[0].ds_seqdocumest["tt-item-doc-est"]
         this.ttDuplicata = tableData.items[0].ds_seqdocumest["tt-dupli-apagar"]
         this.ttContaMovto = tableData.items[0].ds_seqdocumest["tt-conta-resumo"]
+        console.log(this.ttContaMovto)
         this.isHideLoading = true
       });
-
     });
   }
 
@@ -74,7 +73,7 @@ export class DanfeComponent implements OnInit {
     this.tableColumns1 = this.danfeService.getColumnsttConta(this);
     this.tableColumns2 = this.danfeService.getColumnsItemDoc(this);
     this.tableColumns3 = this.danfeService.getColumnsDuplicatas(this);
-    this.tableColumns4 = this.danfeService.getColumnsContaMovto(this)
+    this.tableColumns4 = this.danfeService.getColumnsContaMvto(this);
     return this;
   }
 }

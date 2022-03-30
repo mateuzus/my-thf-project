@@ -1,7 +1,16 @@
 <div class="thf-wrapper">
   <thf-toolbar [t-title]="titleToolbar"></thf-toolbar>
 
-  <thf-menu [t-menus]="menus"></thf-menu>
+  <thf-menu [t-menus]="menus">
+    <div class="thf-menu-header-container">
+      <div class="thf-menu-logo">
+        <div *t-menu-header-template>
+          <a href="http://localhost:4200/"><img class="logo" src="../../assets/totvs-logo-menu.svg" alt="totvs icon"></a>
+        </div>
+      </div>
+    </div>
+  </thf-menu>
+
 
   <thf-page-default t-title="Consulta NF">
     <thf-modal #modal t-title="Filtro" [t-primary-action]="confirm" [t-secondary-action]="close" t-click-out="true"
@@ -65,7 +74,7 @@
     </thf-button>
 
     <div>
-      <thf-loading-overlay [hidden]="isHideLoading"></thf-loading-overlay>
+      <thf-loading-overlay t-screen-lock="true" t-text="Carregando" [hidden]="isHideLoading"></thf-loading-overlay>
     </div>
 
     <thf-table t-sort="true" t-striped="true" [t-columns]="tableColumns" [t-items]="tableDataA">

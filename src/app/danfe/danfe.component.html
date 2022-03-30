@@ -1,4 +1,3 @@
-<a></a>
 <hr>
 <div class="title">
   <b>Alpino</b>
@@ -36,15 +35,6 @@
 >
 </thf-table>
 <hr>
-<p class="duplicatas">Conta Movimento</p>
-<hr>
-<thf-table
-  t-sort="true"
-  t-striped="true"
-  [t-columns]="tableColumns4"
-  [t-items]="ttContaMovto"
->
-<hr>
 <p class="duplicatas">Duplicatas</p>
 <hr>
 <thf-table
@@ -54,7 +44,17 @@
   [t-items]="ttDuplicata"
 >
 </thf-table>
+<hr>
+<p class="movimento">Movimento</p>
+<hr>
+<thf-table
+  t-sort="true"
+  t-striped="true"
+  [t-columns]="tableColumns4"
+  [t-items]="ttContaMovto"
+>
+</thf-table>
 
 <div>
-  <thf-loading-overlay [hidden]="isHideLoading"></thf-loading-overlay>
+  <thf-loading-overlay t-screen-lock="true" t-text="Carregando" [hidden]="isHideLoading"></thf-loading-overlay>
 </div>

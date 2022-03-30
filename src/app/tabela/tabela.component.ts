@@ -18,18 +18,17 @@ import { TabelaService } from "./tabela.service";
   providers: [TabelaService],
 })
 export class TabelaComponent implements OnInit {
-  titleToolbar = "Alpino - Tela Real 8001";
+  titleToolbar = "Consulta NF";
 
   menus = [{ label: "Consultar NF", link: "./consulta-nf" }];
-
   carregou_items: boolean = false;
   tableColumns: Array<any>;
   tableDataA;
   tableDataB;
-  @Output() ttDocFiscal: Array<any>;
-  @Output() ttConta: Array<any>;
-  @Output() ttItemDoc: Array<any>;
-  @Output() ttDuplicata: Array<any>;
+  ttDocFiscal: Array<any>;
+  ttConta: Array<any>;
+  ttItemDoc: Array<any>;
+  ttDuplicata: Array<any>;
 
   title: any;
   response: any;
@@ -50,7 +49,7 @@ export class TabelaComponent implements OnInit {
   natOper;
   numDoc;
   serieDoc;
-  
+
 
   @ViewChild("optionsForm", { static: true }) form: NgForm;
   @ViewChild(ThfModalComponent, { static: true }) thfModal: ThfModalComponent;
@@ -238,16 +237,6 @@ export class TabelaComponent implements OnInit {
         this.ttConta = tableDataB.items[0].ds_seqdocumest["tt-imposto"];
         this.ttItemDoc = tableDataB.items[0].ds_seqdocumest["tt-item-doc-est"];
         this.ttDuplicata = tableDataB.items[0].ds_seqdocumest["tt-dupli-apagar"];
-        console.log(
-          "ttDocFiscal",
-          this.ttDocFiscal,
-          "ttConta",
-          this.ttConta,
-          "ttItem",
-          this.ttItemDoc,
-          "ttDuplicata",
-          this.ttDuplicata
-        );
         this.isHideLoading = true;
         this.goToDados();
         /* window.open("danfe?cod-emitente=" + value["cod-emitente"] + "?" +
@@ -274,18 +263,5 @@ export class TabelaComponent implements OnInit {
     }}))
 
     window.open(link, "_blank")
-
-     /* this.router.navigate(["/danfe"], {
-      queryParams: {
-        "cod-emitente-fim": this.codEmitente,
-        "cod-estabel-fim": this.codEstabel,
-        "dt-trans-fim": this.dtTrans,
-        "i-confere": this.iConfere,
-        "nat-operacao-fim": this.natOper,
-        "nro-docto-fim": this.numDoc,
-        "serie-docto-fim": this.serieDoc,
-        "l-detalhe": true
-      },
-    }) */
   }
 }

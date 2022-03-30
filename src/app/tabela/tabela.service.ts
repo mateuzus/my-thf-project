@@ -1,41 +1,44 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TabelaService {
 
-  
+  private baseUrl: string = environment.base_url_api
 
   constructor(private http: HttpClient) { }
 
   getColumns(component_instance) {
     return [
-      { property: "actions", label: "Ações", type: "icon", icons: [
-        {
-           action: (value, row) => {
-            component_instance.abrirModalDetalhes(
-              value, row
-            )
-          }, 
-          color: "primary",
-          icon: "thf-icon thf-icon-eye",
-          tooltip: "Clique para ver os detalhes",
-          value: "detalhar"
-        }
-      ]},
-      
+      {
+        property: "actions", label: "Ações", type: "icon", icons: [
+          {
+            action: (value, row) => {
+              component_instance.abrirModalDetalhes(
+                value, row
+              )
+            },
+            color: "primary",
+            icon: "thf-icon thf-icon-eye",
+            tooltip: "Clique para ver os detalhes",
+            value: "detalhar"
+          }
+        ]
+      },
+
       { property: 'cod-estabel', label: 'Estabel', type: 'string' },
       { property: 'cod-emitente', label: 'Emitente' },
       { property: 'nro-docto', label: 'Documento' },
       { property: 'serie-docto', label: 'Serie' },
       { property: 'nat-operacao', label: 'Natureza' },
-      { property: 'dt-emissao', label: 'Emissão'},
+      { property: 'dt-emissao', label: 'Emissão' },
       { property: 'dt-trans', label: 'Transação', type: 'string' },
-      { property: 'conferido', label: 'Conferido'},
+      { property: 'conferido', label: 'Conferido' },
       { property: 'qtd-conferencia', label: 'Qtd Conf.' },
-      { property: 'dt-atualizacao', label: 'Atualização'},
+      { property: 'dt-atualizacao', label: 'Atualização' },
     ]
   }
 
@@ -54,7 +57,10 @@ export class TabelaService {
     ]
   }
 
-  realA(params, sucess_func?, error_func?){
+  realA(params, sucess_func?, error_func?) {
+
+    let url = this.baseUrl + 'api-real8001a.r'
+
     let headers_send = new HttpHeaders();
     headers_send = headers_send.append("Authorization", "Basic " + btoa("maikon:Titi@01titi"))
     headers_send = headers_send.append("Content-Type", "application/json")
@@ -63,19 +69,21 @@ export class TabelaService {
       "tt-param": params
     }
 
-    return this.http.post("https://alpino-dts-teste.totvscloud.com.br/api/esp/v1/api-real8001a.r", params2, {
+    return this.http.post(url, params2, {
       headers: headers_send,
       responseType: 'json',
       withCredentials: true,
       params: params2
     })
-    .subscribe(
-      sucess_func,
-      error_func
-    )
+      .subscribe(
+        sucess_func,
+        error_func
+      )
   }
 
   realB(params, sucess_func?, error_func?) {
+
+    let url = this.baseUrl + 'api-real8001b.r'
 
     let headers_send = new HttpHeaders();
     headers_send = headers_send.append("Authorization", "Basic " + btoa("maikon:Titi@01titi"))
@@ -85,7 +93,7 @@ export class TabelaService {
       "tt-param": params
     }
 
-    return this.http.post("https://alpino-dts-teste.totvscloud.com.br/api/esp/v1/api-real8001b.r", params2, {
+    return this.http.post(url, params2, {
       headers: headers_send,
       responseType: 'json',
       withCredentials: true
