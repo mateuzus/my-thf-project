@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,38 +6,43 @@ import { Injectable } from '@angular/core';
 })
 export class TabelaService {
 
+  
 
   constructor(private http: HttpClient) { }
 
   getColumns(component_instance) {
     return [
-      {
-        property: 'actions', label: 'Ações', type: 'icon', icons: [
-          {
-            action: (value, row) => {
-              component_instance.abrirModalDetalhe(value, row, 'detail', 'Detalhes')
-            },
-            color: 'primary',
-            icon: 'thf-icon thf-icon-list',
-            tooltip: 'Clique para ver os detalhes',
-            value: 'detalhar'
-          }
-        ]
-      },
-      { property: 'id', label: 'ID' },
-      { property: 'nro-docto', label: 'Nmr. Documento' },
-      { property: 'dt-trans', label: 'Dt. transação', type: 'string' },
-      { property: 'cod-emitente', label: 'Cod. Emitente' },
-      { property: 'cod-estabel', label: 'Cod. Estabelecimento', type: 'string' },
-      { property: 'serie-docto', label: 'Serie Documento' },
-      { property: 'nat-operacao', label: 'Nat. Operação' }
-    ];
+      { property: "actions", label: "Ações", type: "icon", icons: [
+        {
+           action: (value, row) => {
+            component_instance.abrirModalDetalhes(
+              value, row
+            )
+          }, 
+          color: "primary",
+          icon: "thf-icon thf-icon-eye",
+          tooltip: "Clique para ver os detalhes",
+          value: "detalhar"
+        }
+      ]},
+      
+      { property: 'cod-estabel', label: 'Estabel', type: 'string' },
+      { property: 'cod-emitente', label: 'Emitente' },
+      { property: 'nro-docto', label: 'Documento' },
+      { property: 'serie-docto', label: 'Serie' },
+      { property: 'nat-operacao', label: 'Natureza' },
+      { property: 'dt-emissao', label: 'Emissão'},
+      { property: 'dt-trans', label: 'Transação', type: 'string' },
+      { property: 'conferido', label: 'Conferido'},
+      { property: 'qtd-conferencia', label: 'Qtd Conf.' },
+      { property: 'dt-atualizacao', label: 'Atualização'},
+    ]
   }
 
   getConfere() {
     return [
-      { value: 1, label: 'Conferido' },
-      { value: 2, label: 'Não conferido' },
+      { value: 1, label: 'Não conferido' },
+      { value: 2, label: 'Conferido' },
       { value: 3, label: 'Ambos' }
     ]
   }
@@ -49,7 +54,28 @@ export class TabelaService {
     ]
   }
 
-  getParams(params) {
+  realA(params, sucess_func?, error_func?){
+    let headers_send = new HttpHeaders();
+    headers_send = headers_send.append("Authorization", "Basic " + btoa("maikon:Titi@01titi"))
+    headers_send = headers_send.append("Content-Type", "application/json")
+
+    let params2 = {
+      "tt-param": params
+    }
+
+    return this.http.post("https://alpino-dts-teste.totvscloud.com.br/api/esp/v1/api-real8001a.r", params2, {
+      headers: headers_send,
+      responseType: 'json',
+      withCredentials: true,
+      params: params2
+    })
+    .subscribe(
+      sucess_func,
+      error_func
+    )
+  }
+
+  realB(params, sucess_func?, error_func?) {
 
     let headers_send = new HttpHeaders();
     headers_send = headers_send.append("Authorization", "Basic " + btoa("maikon:Titi@01titi"))
@@ -63,8 +89,9 @@ export class TabelaService {
       headers: headers_send,
       responseType: 'json',
       withCredentials: true
-    })
+    }).subscribe(
+      sucess_func,
+      error_func
+    )
   }
-
-
 }

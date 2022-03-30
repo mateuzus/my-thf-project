@@ -10,14 +10,20 @@ import { FormsModule } from '@angular/forms';
 
 import { TabelaComponent, TabelaService } from './tabela';
 import { HttpClientModule } from '@angular/common/http';
+import { DanfeComponent } from './danfe/danfe.component';
+import { AppRoutingModule } from './app-routing.module';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TabelaComponent,
+    DanfeComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     CommonModule,
     FormsModule,

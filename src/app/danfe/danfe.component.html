@@ -1,0 +1,60 @@
+<a></a>
+<hr>
+<div class="title">
+  <b>Alpino</b>
+  <b>Conferência de Documento Fiscal</b>
+  <b>Página: 1</b>
+</div>
+<hr>
+<p class="documento">Documento Fiscal</p>
+<hr>
+<thf-table
+  t-sort="true"
+  t-striped="true"
+  [t-columns]="tableColumns"
+  [t-items]="ttDocFiscal"
+>
+</thf-table>
+<hr>
+<p class="impostos">Impostos</p>
+<hr>
+<thf-table
+  t-sort="true"
+  t-striped="true"
+  [t-columns]="tableColumns1"
+  [t-items]="ttConta"
+>
+</thf-table>
+<hr>
+<p class="item">Items</p>
+<hr>
+<thf-table
+  t-sort="true"
+  t-striped="true"
+  [t-columns]="tableColumns2"
+  [t-items]="ttItemDoc"
+>
+</thf-table>
+<hr>
+<p class="duplicatas">Conta Movimento</p>
+<hr>
+<thf-table
+  t-sort="true"
+  t-striped="true"
+  [t-columns]="tableColumns4"
+  [t-items]="ttContaMovto"
+>
+<hr>
+<p class="duplicatas">Duplicatas</p>
+<hr>
+<thf-table
+  t-sort="true"
+  t-striped="true"
+  [t-columns]="tableColumns3"
+  [t-items]="ttDuplicata"
+>
+</thf-table>
+
+<div>
+  <thf-loading-overlay [hidden]="isHideLoading"></thf-loading-overlay>
+</div>
